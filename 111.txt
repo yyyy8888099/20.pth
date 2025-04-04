@@ -1,0 +1,14 @@
+# 单元格1：安装依赖
+!pip install torch librosa
+
+# 单元格2：加载MP3并转为张量
+import librosa
+import torch
+
+audio, sr = librosa.load("input.mp3", sr=22050)  # 加载MP3
+tensor = torch.from_numpy(audio)                 # 转为PyTorch张量
+torch.save(tensor, "output.pth")                 # 保存为.pth文件
+
+# 单元格3：下载结果
+from IPython.display import FileLink
+FileLink("output.pth")                           # 生成下载链接
